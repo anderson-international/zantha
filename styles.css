@@ -50,6 +50,8 @@ a:hover { text-decoration: underline; }
 
 /* Strap line bar */
 .strap { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; background: #7B6A58; color: #fff; border-radius: 8px; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 14px; }
+/* Full-bleed variant */
+.strap.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); border-radius: 0; }
 
 /* Buttons (touch targets >= 48px) */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; font-weight: 600; }
