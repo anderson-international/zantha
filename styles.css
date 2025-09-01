@@ -10,9 +10,13 @@
   --card-border: #343741;
   --border: var(--card-border);
   --maxw: 1120px;
+  /* Offset for sticky header (64px) + strap (~40-48px) */
+  --anchor-offset: 112px;
 }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
+/* Smooth in-page anchor scrolling */
+html { scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--fg);
@@ -42,18 +46,18 @@ a:hover { text-decoration: underline; }
 .nav-links { display: flex; gap: 16px; align-items: center; }
 
 /* Hero */
-.hero { padding: 56px 0 32px; }
+.hero { padding: 28px 0 32px; }
 .hero .container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; align-items: center; }
 .hero-copy h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 0 0 12px; }
 .hero-copy p { margin: 0 0 16px; color: var(--muted); }
-.hero-copy blockquote { margin: 0 0 16px; padding: 12px 16px; border-left: 4px solid var(--brand); background: rgba(255, 255, 255, 0.03); color: var(--muted); font-style: italic; border-radius: 6px; }
+.hero-copy blockquote { margin: 0 0 16px; padding: 12px 16px; background: #2C332F; color: var(--muted); font-style: italic; border-radius: 10px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), inset 0 -1px 0 rgba(0,0,0,0.25); }
 .subtle-links { margin: 0 0 8px; color: var(--muted); display: flex; align-items: center; gap: 8px; }
 .subtle-links a { color: inherit; text-decoration: underline; }
 .subtle-links a:hover { filter: brightness(1.1); }
 .cta .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
 
 /* Strap line bar */
-.strap { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; background: #7B6A58; color: #fff; border-radius: 8px; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 14px; }
+.strap { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 5px 16px; background: #7B6A58; color: #fff; border-radius: 8px; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 14px; }
 /* Full-bleed variant */
 .strap.full-bleed { width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); border-radius: 0; position: sticky; top: 64px; z-index: 9; border-bottom: 1px solid var(--border); }
 
@@ -64,9 +68,14 @@ a:hover { text-decoration: underline; }
 
 /* Features */
 .features { padding: 28px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--card); }
-.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 .features h3 { margin: 0 0 6px; font-size: 18px; }
 .features p { margin: 0; color: var(--muted); }
+/* Card styling for services */
+.features .grid-3 > article { background: color-mix(in oklab, var(--card) 88%, white 12%); border: 1px solid var(--border); border-radius: 10px; padding: 16px; box-shadow: 0 1px 0 rgba(255,255,255,0.03), 0 6px 16px rgba(0,0,0,0.18); }
+
+/* Ensure anchored sections are not hidden under sticky header/strap */
+#about, #contact { scroll-margin-top: var(--anchor-offset); }
 
 /* Gallery */
 .gallery { padding: 24px 0; }
