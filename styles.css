@@ -69,3 +69,8 @@ a:hover { text-decoration: underline; }
   .thumbs { grid-template-columns: repeat(2, 1fr); }
   .grid-3 { grid-template-columns: 1fr; }
 }
+
+/* Emphasize first gallery tile (founder) on larger screens */
+@media (min-width: 961px) {
+  .thumbs > picture:first-child { grid-column: span 2; }
+}
