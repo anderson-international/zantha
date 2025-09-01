@@ -32,6 +32,9 @@ a:hover { text-decoration: underline; }
 .skip { position: absolute; left: -9999px; top: 0; background: var(--card); color: var(--fg); padding: 8px 12px; border-radius: 6px; }
 .skip:focus { left: 12px; top: 12px; z-index: 1000; }
 
+/* Screen-reader only utility */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
 /* Header */
 .site-header { position: sticky; top: 0; backdrop-filter: saturate(110%) blur(6px); background: color-mix(in oklab, #1E2128 85%, transparent); border-bottom: 1px solid var(--border); z-index: 10; }
 .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
@@ -44,6 +47,9 @@ a:hover { text-decoration: underline; }
 .hero-copy h1 { font-size: clamp(28px, 4vw, 44px); line-height: 1.15; margin: 0 0 12px; }
 .hero-copy p { margin: 0 0 16px; color: var(--muted); }
 .cta .btn.primary { background: linear-gradient(135deg, var(--brand), var(--brand-2)); color: #fff; }
+
+/* Strap line bar */
+.strap { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 16px; background: #7B6A58; color: #fff; border-radius: 8px; font-weight: 700; letter-spacing: 0.3px; margin: 0 0 14px; }
 
 /* Buttons (touch targets >= 48px) */
 .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; font-weight: 600; }
@@ -60,10 +66,10 @@ a:hover { text-decoration: underline; }
 .gallery { padding: 24px 0; }
 .thumbs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
 /* Normalized tiles */
-.thumb { display: block; position: relative; aspect-ratio: 4 / 3; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
-.thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 0; }
+.thumb { display: block; position: relative; aspect-ratio: 3 / 2; background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.thumb img { width: 100%; height: 100%; object-fit: contain; border-radius: 0; }
 /* Logo tiles: contain + centered with padding */
-.thumb.logo { padding: 16px; display: grid; place-items: center; }
+.thumb.logo { padding: 12px; display: grid; place-items: center; }
 .thumb.logo img { object-fit: contain; width: 100%; height: 100%; }
 
 /* About */
@@ -88,5 +94,7 @@ a:hover { text-decoration: underline; }
 
 /* Emphasize first gallery tile (founder) on larger screens */
 @media (min-width: 961px) {
+  /* 5 columns so 3 tiles fit to the right of the founder */
+  .thumbs { grid-template-columns: repeat(5, 1fr); }
   .thumbs > picture:first-child { grid-column: span 2; }
 }
